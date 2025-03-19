@@ -10,11 +10,9 @@ const registerValidation = [
     body('email').isEmail().withMessage('Please enter a valid email'),
     body('password')
         .isLength({ min: 6 })
-        .withMessage('Password must be at least 6 characters long')
-        .matches(/^(?=.*[A-Za-z])(?=.*\d)/)
-        .withMessage('Password must contain both letters and numbers'),
+        .withMessage('Password must be at least 6 characters long'),
     body('role').isIn(['student', 'instructor', 'parent', 'admin']).withMessage('Invalid role'),
-    body('phoneNumber').optional().isMobilePhone().withMessage('Invalid phone number')
+    body('phoneNumber').optional().trim()
 ];
 
 const loginValidation = [

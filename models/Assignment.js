@@ -39,7 +39,9 @@ const assignmentSchema = new mongoose.Schema({
             enum: ['multiple_choice', 'true_false', 'short_answer'],
             required: true
         },
-        options: [String],
+        options: [{
+            type: String
+        }],
         correctAnswer: {
             type: String,
             required: true
@@ -52,23 +54,36 @@ const assignmentSchema = new mongoose.Schema({
     submissions: [{
         student: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'User',
+            required: true
         },
         answers: [{
-            questionIndex: Number,
-            answer: String
+            questionId: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true
+            },
+            answer: {
+                type: String,
+                required: true
+            }
         }],
         submittedAt: {
             type: Date,
             default: Date.now
         },
-        score: Number,
-        feedback: String
+        score: {
+            type: Number
+        },
+        feedback: {
+            type: String
+        }
     }],
     createdAt: {
         type: Date,
         default: Date.now
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Assignment', assignmentSchema); 
