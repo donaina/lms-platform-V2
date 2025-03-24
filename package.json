@@ -4,11 +4,12 @@
   "description": "Learning Management System Platform",
   "main": "serv.js",
   "scripts": {
-    "start": "node serv.js",
-    "dev": "nodemon serv.js",
-    "client": "cd client && npm start",
-    "dev:full": "concurrently \"npm run dev\" \"npm run client\"",
-    "create-admin": "node scripts/createAdmin.js"
+  "start": "node serv.js",
+  "dev": "nodemon serv.js",
+  "client": "cd client && npm start",
+  "dev:full": "concurrently \"npm run dev\" \"npm run client\"",
+  "create-admin": "node scripts/createAdmin.js",
+  "build": "cd client && npm run build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
