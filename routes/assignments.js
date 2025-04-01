@@ -45,6 +45,7 @@ router.post('/', auth, async (req, res) => {
     type: req.body.type,
     requirements: req.body.requirements,
     attachments: req.body.attachments,
+    //to include min required score
   });
 
   try {
